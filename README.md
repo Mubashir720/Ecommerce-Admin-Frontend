@@ -70,3 +70,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 "# Ecommerce-Admin-Frontend" 
 "# Ecommerce-Admin-Frontend" 
+"# Ecommerce-Admin-Frontend"   # Create README.md if not already created
+"# Ecommerce-Admin-Frontend" 
