@@ -11,20 +11,24 @@ export const uploadImg = createAsyncThunk(
       }
       return await uploadService.uploadImg(formData);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      // Throw a new serializable error
+      throw new Error("An error occurred during image upload.");
     }
   }
 );
+
 export const delImg = createAsyncThunk(
   "delete/images",
   async (id, thunkAPI) => {
     try {
       return await uploadService.deleteImg(id);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      // Throw a new serializable error
+      throw new Error("An error occurred during image deletion.");
     }
   }
 );
+
 const initialState = {
   images: [],
   isError: false,
@@ -32,8 +36,9 @@ const initialState = {
   isSuccess: false,
   message: "",
 };
+
 export const uploadSlice = createSlice({
-  name: "imaegs",
+  name: "images",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -51,7 +56,7 @@ export const uploadSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.message = action.error;
+        state.message = action.error.message; // Access the error message
       })
       .addCase(delImg.pending, (state) => {
         state.isLoading = true;
@@ -66,8 +71,9 @@ export const uploadSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.message = action.payload;
+        state.message = action.error.message; // Access the error message
       });
   },
 });
+
 export default uploadSlice.reducer;

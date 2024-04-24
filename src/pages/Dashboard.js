@@ -24,9 +24,9 @@ const data1 = [];
 for (let i = 0; i < 46; i++) {
   data1.push({
     key: i,
-    name: `Edward King ${i}`,
+    name: `Mohsin Rauf ${i}`,
     product: 32,
-    staus: `London, Park Lane no. ${i}`,
+    staus: `6th road,Rawalpindi. ${i}`,
   });
 }
 const Dashboard = () => {
@@ -116,7 +116,7 @@ const Dashboard = () => {
         <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
           <div>
             <p className="desc">Total</p>
-            <h4 className="mb-0 sub-title">$1100</h4>
+            <h4 className="mb-0 sub-title">Rs. 11100</h4>
           </div>
           <div className="d-flex flex-column align-items-end">
             <h6>
@@ -128,7 +128,7 @@ const Dashboard = () => {
         <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
           <div>
             <p className="desc">Total</p>
-            <h4 className="mb-0 sub-title">$1100</h4>
+            <h4 className="mb-0 sub-title">Rs. 11100</h4>
           </div>
           <div className="d-flex flex-column align-items-end">
             <h6 className="red">
@@ -140,7 +140,7 @@ const Dashboard = () => {
         <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
           <div>
             <p className="desc">Total</p>
-            <h4 className="mb-0 sub-title">$1100</h4>
+            <h4 className="mb-0 sub-title">Rs. 11100</h4>
           </div>
           <div className="d-flex flex-column align-items-end">
             <h6 className="green">
