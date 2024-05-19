@@ -4,6 +4,10 @@ import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../features/product/productSlice";
+import {
+  deleteProduct,
+  updatedProduct,
+} from "../features/product/productSlice";
 import { Link } from "react-router-dom";
 const columns = [
   {
@@ -57,16 +61,23 @@ const Productlist = () => {
       price: `${productState[i].price}`,
       action: (
         <>
-          <Link to="/" className=" fs-3 text-danger">
+          <Link
+            to={`/admin/product/${productState[i]._id}`}
+            className=" fs-3 text-danger"
+          >
             <BiEdit />
           </Link>
-          <Link className="ms-3 fs-3 text-danger" to="/">
+          <button
+            className="ms-3 fs-3 text-danger bg-transparent border-0"
+            onClick={() => dispatch(deleteProduct(productState[i]._id))}
+          >
             <AiFillDelete />
-          </Link>
+          </button>
         </>
       ),
     });
   }
+
   console.log(data1);
   return (
     <div>

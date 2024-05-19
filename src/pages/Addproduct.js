@@ -13,7 +13,12 @@ import { getColors } from "../features/color/colorSlice";
 import { Select } from "antd";
 import Dropzone from "react-dropzone";
 import { delImg, uploadImg } from "../features/upload/uploadSlice";
-import { createProducts, resetState } from "../features/product/productSlice";
+import {
+  createProducts,
+  updateProduct,
+  resetState,
+} from "../features/product/productSlice";
+import { useParams } from "react-router-dom";
 let schema = yup.object().shape({
   title: yup.string().required("Title is Required"),
   description: yup.string().required("Description is Required"),
@@ -31,6 +36,7 @@ let schema = yup.object().shape({
 const Addproduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
   const [color, setColor] = useState([]);
   const [images, setImages] = useState([]);
   console.log(color);
@@ -87,7 +93,14 @@ const Addproduct = () => {
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      dispatch(createProducts(values));
+      if (id) {
+        // If productId exists, it means we are updating an existing product
+        const data = { id: id, productData: values };
+        dispatch(updateProduct(data));
+      } else {
+        // If productId is null, it means we are adding a new product
+        dispatch(createProducts(values));
+      }
       formik.resetForm();
       setColor(null);
       setTimeout(() => {
@@ -101,7 +114,7 @@ const Addproduct = () => {
   };
   return (
     <div>
-      <h3 className="mb-4 title">Add Product</h3>
+      <h3 className="mb-4 title">{id ? "Update Product" : "Add Product"}</h3>
       <div>
         <form
           onSubmit={formik.handleSubmit}
@@ -257,7 +270,7 @@ const Addproduct = () => {
             className="btn btn-success border-0 rounded-3 my-5"
             type="submit"
           >
-            Add Product
+            {id ? "Update Product" : "Add Product"}
           </button>
         </form>
       </div>
